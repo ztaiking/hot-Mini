@@ -10,4 +10,5 @@
     <view bindtap="showdates " wx:elif="{{ isTrue3 }}">
         <view>{{ item3 }}</view>
     </view>
+    <view>222232222333ss2s222sssssss322</view>
 </view>

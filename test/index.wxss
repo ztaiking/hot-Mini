@@ -4,6 +4,7 @@
 
 .contend1 {
     background-color: white;
+    color:red
 }
 
 .cu-avatar2 {

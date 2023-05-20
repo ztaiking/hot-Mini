@@ -144,11 +144,11 @@ function runCode(json) {
 
 async function writeFileToPage() {
     let json = await fs.readFile(
-        '/Users/yangchong/Desktop/Demo/解释器/testMini/hotMini/dist/zipCode.json'
+        './dist/zipCode.json'
     )
     json = json.toString()
     await fs.writeFile(
-        '/Users/yangchong/Desktop/Demo/解释器/testMini/pages/index/index.js',
+        './pages/index/index.js',
         json,
         (err) => {
             console.log(err)

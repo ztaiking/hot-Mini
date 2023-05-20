@@ -1,6 +1,13 @@
 const path = require('path')
 
 module.exports = {
+    configureWebpack: {
+        plugins: [
+          new webpack.DefinePlugin({
+            "process.argv": JSON.stringify(process.argv)
+          })
+        ]
+      },
     target: ['web', 'es5'],
     devtool: 'cheap-module-source-map',
     mode: 'development',

@@ -1,6 +1,6 @@
 const inlineCss = require('inline-css')
 const artTemplate = require('art-template')
-
+const util = require('../utils/index')
 const parseHtml = require('./parse')
 const astTraverse = require('./ast-traverse')
 const fs = require('../utils/fs-async.js')
@@ -8,9 +8,11 @@ const encode = require('./encode')
 const path = require('path')
 const { cwd } = require('node:process')
 
-const WXML_PATH = '../test/index.wxml'
-const WXSS_PATH = '../test/index.wxss'
-const JS_PATH = '../test/index.js'
+const args = (util.getOptions(process)).option;
+const arg = args?args:"test"
+const WXML_PATH = `../${arg}/index.wxml`
+const WXSS_PATH = `../${arg}/index.wxss`
+const JS_PATH = `../${arg}/index.js`
 const root = cwd()
 /**
  * 读取文件的函数
@@ -100,6 +102,7 @@ const concatStr = (render, jsCode) => {
 ;(async function init() {
     try {
         const paths = [JS_PATH, WXML_PATH, WXSS_PATH]
+        console.log(paths)
         const code = await readFileFn(paths)
         const { htmlCode, cssCode, jsCode } = code
         let htmlCss = await inlineCssFn(htmlCode, cssCode)
