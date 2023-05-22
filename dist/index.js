@@ -1,5 +1,4 @@
-function runCode(){ //Page Object
-var Page = function(page){
+function runCode(){ var Page = function(page){
         return page
       }
     return Page({
@@ -11,11 +10,26 @@ var Page = function(page){
       const render = function($data){
 'use strict'
 $data=$data||{}
-var $out='',$line=[0,0]
+var $out='',$line=[0,0],isTrue=$data.isTrue,$escape=$imports.$escape,item1=$data.item1,item2=$data.item2,item3=$data.item3
 try{
-$out+="<view > sssdsdssssdss </view>"
+$out+="<view class='contend'style='background-color: white;'> "
+$line=[0,55]
+if(isTrue){
+$out+="<view class='contend1'style='background-color: white; color: red;'> <view > "
+$line=[0,145]
+$out+=$escape(item1)
+$out+=" </view> </view>"
+$line=[0,170]
+}
+$out+="<view bindtap='showdates'> <view > "
+$line=[0,212]
+$out+=$escape(item2)
+$out+=" </view> </view><view bindtap='showdates '> <view > "
+$line=[0,273]
+$out+=$escape(item3)
+$out+=" </view> </view><view > 222232222333ss2s222sssssss322 </view> </view>"
 }catch(error){
-throw {name:'RuntimeError',path:null,message:error.message,line:$line[0]+1,column:$line[1]+1,source:"<view > sssdsdssssdss </view>",stack:error.stack}
+throw {name:'RuntimeError',path:null,message:error.message,line:$line[0]+1,column:$line[1]+1,source:"<view class='contend'style='background-color: white;'> {{if isTrue }}<view class='contend1'style='background-color: white; color: red;'> <view > {{item1}} </view> </view>{{/if}}<view bindtap='showdates'> <view > {{item2}} </view> </view><view bindtap='showdates '> <view > {{item3}} </view> </view><view > 222232222333ss2s222sssssss322 </view> </view>",stack:error.stack}
 }
 return $out
 };
@@ -24,35 +38,18 @@ return $out
       this.setData({html : this.parse(html)});
     },
     data: {
-        a:1
+        isTrue: false,
+        isTrue2: false,
+        isTrue3: true,
+        item1: 1,
+        item2: 2,
+        item3: 3
     },
-    //options(Object)
-    onLoad: function(options){this.setdata()
+    onLoad() {this.setdata()
         
     },
-    onReady: function(){
-        
-    },
-    onShow: function(){
-        
-    },
-    onHide: function(){
-
-    },
-    onUnload: function(){
-
-    },
-    onPullDownRefresh: function(){
-
-    },
-    onReachBottom: function(){
-
-    },
-    onShareAppMessage: function(){
-
-    },
-    onPageScroll: function(){
-
+    showdates() {
+        console.log('我是showdates函数')
     }
-
-}); }module.exports = runCode;
+})
+ }module.exports = runCode;

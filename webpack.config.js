@@ -1,13 +1,13 @@
 const path = require('path')
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
-    configureWebpack: {
-        plugins: [
-          new webpack.DefinePlugin({
-            "process.argv": JSON.stringify(process.argv)
-          })
-        ]
-      },
+    plugins: [
+        new Dotenv({
+            path: path.resolve(__dirname, '.env')
+        })
+
+    ],
     target: ['web', 'es5'],
     devtool: 'cheap-module-source-map',
     mode: 'development',

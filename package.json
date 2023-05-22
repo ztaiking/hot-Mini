@@ -16,11 +16,12 @@
     "license": "ISC",
     "devDependencies": {
         "@babel/core": "^7.18.10",
-        "@babel/preset-env": "^7.18.10",
-        "babel-loader": "^8.2.5",
+        "@babel/preset-env": "^7.21.5",
+        "babel-loader": "^8.3.0",
         "commitizen": "^4.2.5",
         "cross-env": "^7.0.3",
         "cz-conventional-changelog": "^3.3.0",
+        "dotenv-webpack": "^8.0.1",
         "inline-css": "^3.0.0",
         "pako": "^2.0.4",
         "prettier": "^2.7.1",
@@ -36,6 +37,7 @@
         "acorn": "^8.8.0",
         "art-template": "^4.13.2",
         "axios": "^1.4.0",
+        "laf-client-sdk": "^1.0.0-beta.8",
         "progress": "^2.0.3"
     }
 }
