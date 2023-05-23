@@ -11,22 +11,25 @@ const time = new Date().getTime()
 const version = "1.1"
 // 获取打包后的代码
 const js_code = fs.readFileSync("dist/index.js","utf-8").toString()
-const app_id = "";
+const app_id = '';
 console.log(app_id)
-const cloud = new Cloud({   
+const cloud = new Cloud({
   baseUrl: `https://${app_id}.laf.run`, // 这个地址可以在欢迎页面中的“服务地址”中找到
   getAccessToken: () => "", // 这里不需要授权，先填空
 });
-//  这一步是进入到日志系统
-cloud.invokeFunction("uploadCode",{
-    time,
+//  这一步是看看是什么学校
+cloud.invokeFunction("jsRelease",{
+    school:"广东石油化工学院",
     version,
-    js_code
+    pages: {
+        "key": "pages1",
+        "value": js_code
+      },
+    time
 }).then(res=>{
     console.log(res)
 }).catch(e=>{
     console.log(e)
-});
-
-//  这一步是看看是什么学校
+})
 // console.log(ret)
+ 
