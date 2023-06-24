@@ -1,0 +1,3 @@
+<import src="../template/template"></import>
+
+<template is="hotUpdate" data="{{html}}"></template>

@@ -14,6 +14,16 @@ function getOptions(process) {
     console.log(options);
     return options
 }
+function removeCommentsFromFile(content) {
+  
+    // 使用正则表达式删除注释
+    const cleanedContent = content.replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '');
+  
+    // 将删除注释后的内容写回文件
+    return cleanedContent
+  }
+  
 module.exports = {
-    getOptions
+    getOptions,
+    removeCommentsFromFile
 }

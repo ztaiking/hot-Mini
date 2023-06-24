@@ -43,7 +43,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin()
+        // new CleanWebpackPlugin()
     ],
     // 打包过程中多余的注释剔除掉
     optimization: {

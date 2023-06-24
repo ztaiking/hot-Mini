@@ -7,9 +7,8 @@
         "pack": "node ./src/index.js  && webpack",
         "watch": "node ./src/watch.js",
         "build": "node ./src/index.js && webpack && node ./src/build.js",
-        "dev": "node ./src/index.js && webpack && node ./src/build.js  && node./src/run.js",
+        "dev": "node ./src/index.js && webpack && node ./src/build.js  && node ./src/run.js",
         "release": "node ./src/index.js && webpack && node ./src/build.js && node ./src/release.js",
-        "releasev2": "node ./src/index.js && webpack && node ./src/build.js && node ./src/releasev2.js",
         "commit": "cz"
     },
     "keywords": [],

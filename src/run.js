@@ -3,7 +3,7 @@ const path = require('path')
 const { cwd } = require('node:process')
 const root = cwd()
 
-function runCode(json) {
+function runCode(str1) {
     let str = `const app = getApp()
     Page({
   
@@ -19,13 +19,14 @@ function runCode(json) {
        * 生命周期函数--监听页面加载
        */
       onLoad: function (options) {
+        const {pakoRun:pakoRun} = app.pakoRun
         var args = {
           xxx: 'xxx',
-          code: `${json}`
+          code:\`${str1}\`
         }
         if (args) {
           try {
-            var onload1 = app.pakoRun(args, args.code)
+            var onload1 = pakoRun(args, args.code)
             const oD = onload1()
             for(let i in oD){
               this[i] = oD[i]
@@ -37,7 +38,9 @@ function runCode(json) {
         }
     
       },
-  
+      tychange(typeofData){
+        return (typeof typeofData === "object" ? JSON.stringify( typeofData) : typeofData)
+      },
       parseTag(tag) {
         let res = {
             type1: "tag",
@@ -140,16 +143,19 @@ function runCode(json) {
       
       },
     })`
+    return str 
 }
 
 async function writeFileToPage() {
     let json = await fs.readFile(
         './dist/zipCode.json'
     )
+
     json = json.toString()
+    let str = runCode(json)
     await fs.writeFile(
-        './pages/index/index.js',
-        json,
+        './render-template/wx-render/pages/index/index.js',
+        str,
         (err) => {
             console.log(err)
         }

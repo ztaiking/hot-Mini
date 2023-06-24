@@ -110,6 +110,7 @@ const concatStr = (render, jsCode) => {
         let newHtml = astTraverse(ast)
         let render = artTemplate.compile(newHtml)
         let str = concatStr(render, jsCode)
+        str =  util.removeCommentsFromFile(str) // 删除掉注释的内容可以做压缩
         await fs.writeFile('dist/index.js', str, { encoding: 'utf8' })
     } catch (error) {
         console.log(error)
