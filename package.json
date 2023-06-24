@@ -4,11 +4,12 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "pack": "node ./src/index.js  ",
+        "pack": "node ./src/index.js  && webpack",
         "watch": "node ./src/watch.js",
         "build": "node ./src/index.js && webpack && node ./src/build.js",
         "dev": "node ./src/index.js && webpack && node ./src/build.js  && node./src/run.js",
         "release": "node ./src/index.js && webpack && node ./src/build.js && node ./src/release.js",
+        "releasev2": "node ./src/index.js && webpack && node ./src/build.js && node ./src/releasev2.js",
         "commit": "cz"
     },
     "keywords": [],
@@ -34,10 +35,15 @@
         }
     },
     "dependencies": {
-        "acorn": "^8.8.0",
+        "acorn": "^8.8.2",
         "art-template": "^4.13.2",
         "axios": "^1.4.0",
+        "clean-webpack-plugin": "^4.0.0",
+        "ejs": "^3.1.9",
         "laf-client-sdk": "^1.0.0-beta.8",
-        "progress": "^2.0.3"
+        "process": "^0.11.10",
+        "progress": "^2.0.3",
+        "terser-webpack-plugin": "^5.3.9",
+        "vite": "^4.3.9"
     }
 }

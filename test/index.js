@@ -8,7 +8,9 @@ Page({
         item3: 3
     },
     onLoad() {
-        
+        // 打印333
+        // 打印ssssssssssssss
+        console.log(333)
     },
     showdates() {
         console.log('我是showdates函数')

@@ -8,10 +8,9 @@ const fs = require("fs");
 //  获取当前的时间戳
 const time = new Date().getTime()
 // 获取当前版本号
-const version = "1.1"
 // 获取打包后的代码
 const js_code = fs.readFileSync("dist/index.js","utf-8").toString()
-const app_id = '';
+const app_id = 'uxcsf1';
 console.log(app_id)
 const cloud = new Cloud({
   baseUrl: `https://${app_id}.laf.run`, // 这个地址可以在欢迎页面中的“服务地址”中找到
@@ -20,7 +19,6 @@ const cloud = new Cloud({
 //  这一步是看看是什么学校
 cloud.invokeFunction("jsRelease",{
     school:"广东石油化工学院",
-    version,
     pages: {
         "key": "pages1",
         "value": js_code

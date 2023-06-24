@@ -1,5 +1,7 @@
 const path = require('path')
 const Dotenv = require('dotenv-webpack');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
     plugins: [
@@ -36,7 +38,17 @@ module.exports = {
                         presets: ['@babel/preset-env']
                     }
                 }
-            }
+            },
+
         ]
-    }
+    },
+    plugins: [
+        new CleanWebpackPlugin()
+    ],
+    // 打包过程中多余的注释剔除掉
+    optimization: {
+        minimize: true,
+        minimizer: [new TerserPlugin()],
+      },
+
 }

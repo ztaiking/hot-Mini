@@ -1,0 +1,114 @@
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>表单页面</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+background-color: #f2f2f2;
+}
+
+	h1 {
+		text-align: center;
+		color: #333;
+		margin-top: 50px;
+	}
+	
+	form {
+		width: 50%;
+		margin: 0 auto;
+		background-color: #fff;
+		padding: 20px;
+		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+		border-radius: 5px;
+	}
+	
+	label {
+		display: block;
+		margin-bottom: 10px;
+		color: #666;
+	}
+	
+	input[type="text"],
+	textarea {
+		width: 100%;
+		padding: 10px;
+		border: none;
+		border-radius: 3px;
+		box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+		font-size: 16px;
+		margin-bottom: 20px;
+	}
+	
+	input[type="submit"] {
+		background-color: #333;
+		color: #fff;
+		padding: 10px 20px;
+		border: none;
+		border-radius: 3px;
+		cursor: pointer;
+		font-size: 16px;
+	}
+	
+	input[type="submit"]:hover {
+		background-color: #666;
+	}
+	.loading {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background-color: rgba(255, 255, 255, 0.8);
+		padding: 20px;
+		border-radius: 5px;
+		z-index: 9999;
+	}
+</style>
+</head>
+<body>
+<h1>发布到动态js</h1>
+<form action="#" method="post">
+	<label for="school">学校：</label>
+	<input type="text" id="school" name="school" required>
+	<label for="page">页面：</label>
+	<input type="text" id="page" name="page" required>
+	<label for="code">代码：</label>
+	<textarea id="code" name="code" value="<%= code %>"><%= code %></textarea>
+	<input type="submit" id="submit-btn" value="提交">
+	<div class="loading" style="display: none;">提交中，请稍候...</div>
+
+</form>
+</body>
+<script>
+	const loading = document.querySelector('.loading');
+	const form = document.querySelector('form');
+	const time = new Date().getTime()
+	const submitBtn = document.querySelector('#submit-btn');
+	form.addEventListener('submit', function(event) {
+		event.preventDefault(); // 阻止默认提交行为
+		submitBtn.disabled = true; // 禁用提交按钮
+		loading.style.display = 'block'; // 显示 loading 元素
+		const xhr = new XMLHttpRequest();
+		const app_id = 'uxcsf1';
+		const baseUrl = `https://${app_id}.laf.run`
+		xhr.open('POST', `${baseUrl}/jsRelease`);
+		xhr.setRequestHeader('Content-Type', 'application/json');
+		xhr.onload = function(e) {
+			// 处理响应结果
+			// loading.style.display = 'none'; // 隐藏 loading 元素
+			submitBtn.disabled = false; // 启用提交按钮
+			loading.innerHTML = "提交成功，请勿重复提交"
+		};
+		const data = {
+			school: form.school.value,
+			pages: {
+				key: form.page.value,
+				value: form.code.value,
+			},
+			time
+		};
+		xhr.send(JSON.stringify(data));
+});
+</script>
+</html>
