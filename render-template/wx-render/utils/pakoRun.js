@@ -83,6 +83,7 @@ function pakoRun(args, astGo) {
         };
         astGo = unzip(astGo);
         astGo = JSON.parse(astGo);
+        console.log(astGo)
         const runastGo = goPako(astGo, sdGO);
         return runastGo;
     };

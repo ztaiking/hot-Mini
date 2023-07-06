@@ -1,7 +1,7 @@
 // 这一步我想实现把解析的数据放在vue3的uniapp编译
 const fs = require("fs");
 
-fs.readFile("dist/index.json", (err, buffer) => {
+fs.readFile("./dist/zipCode.json", (err, buffer) => {
     let strCode = buffer.toString();
     let str = `
     <template>
@@ -161,5 +161,5 @@ fs.readFile("dist/index.json", (err, buffer) => {
 
     <style lang="scss" scoped></style>
     `;
-    fs.writeFile("../render-template/uniapp-render/pages/index/index.vue", str, (err) => {});
+    fs.writeFile("./render-template/uniapp-render/pages/index/index.vue", str, (err) => {});
 });
